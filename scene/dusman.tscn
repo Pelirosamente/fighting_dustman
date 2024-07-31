@@ -1,0 +1,189 @@
+[gd_scene load_steps=19 format=3 uid="uid://cyns0vv0g2sm6"]
+
+[ext_resource type="Texture2D" uid="uid://c2n514qmmmk2t" path="res://Images/alien animacja.png" id="1_1ngqs"]
+[ext_resource type="Script" path="res://scene/dusman.gd" id="1_p6qm2"]
+[ext_resource type="FontVariation" uid="uid://ctxr5bcjtewkh" path="res://newfont.tres" id="2_n3v1a"]
+[ext_resource type="FontFile" uid="uid://crantry5cxj2h" path="res://Fonts/SuperOnigiri-JR56m.ttf" id="3_0qkc1"]
+[ext_resource type="Script" path="res://scene/3.gd" id="3_7eu3d"]
+[ext_resource type="Script" path="res://scene/Value.gd" id="4_a60yx"]
+[ext_resource type="Shader" path="res://scene/dusman.gdshader" id="7_lv31p"]
+
+[sub_resource type="FontVariation" id="FontVariation_hcaxm"]
+base_font = ExtResource("3_0qkc1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ri65g"]
+shader = ExtResource("7_lv31p")
+shader_parameter/flash_color = Color(1, 0.190904, 0.190904, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oomf"]
+atlas = ExtResource("1_1ngqs")
+region = Rect2(38, 57, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqiri"]
+atlas = ExtResource("1_1ngqs")
+region = Rect2(38, 57, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dav3v"]
+atlas = ExtResource("1_1ngqs")
+region = Rect2(57, 57, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr2vt"]
+atlas = ExtResource("1_1ngqs")
+region = Rect2(76, 57, 19, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2bmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oomf")
+}],
+"loop": true,
+"name": &"dmg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oomf")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqiri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dav3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr2vt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_taxxj"]
+resource_name = "flash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_y0hen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dist2"]
+_data = {
+"RESET": SubResource("Animation_y0hen"),
+"flash": SubResource("Animation_taxxj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7i46"]
+size = Vector2(10, 12)
+
+[node name="Dusman" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_p6qm2")
+metadata/_edit_horizontal_guides_ = [-67.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4.5, 4.5)
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+clip_children = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = 72.0
+
+[node name="HP" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 26.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+theme_override_fonts/font = ExtResource("2_n3v1a")
+theme_override_font_sizes/font_size = 9
+text = "HP"
+
+[node name="3" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+theme_override_fonts/font = ExtResource("3_0qkc1")
+theme_override_font_sizes/font_size = 9
+text = "3"
+script = ExtResource("3_7eu3d")
+
+[node name="Points" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 5.0
+offset_right = 238.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+theme_override_fonts/font = SubResource("FontVariation_hcaxm")
+theme_override_font_sizes/font_size = 9
+text = "Points"
+
+[node name="Value" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 5.0
+offset_right = 262.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+theme_override_fonts/font = ExtResource("3_0qkc1")
+theme_override_font_sizes/font_size = 9
+text = "0"
+script = ExtResource("4_a60yx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ri65g")
+sprite_frames = SubResource("SpriteFrames_w2bmi")
+animation = &"dmg"
+autoplay = "walk"
+
+[node name="flash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dist2")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_f7i46")

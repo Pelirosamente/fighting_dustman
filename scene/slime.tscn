@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg3kikwk4x8ee"]
+
+[ext_resource type="Texture2D" uid="uid://bu6cbhlhvyd47" path="res://Images/slime animacja.png" id="1_ilkcf"]
+[ext_resource type="Script" path="res://scene/slime.gd" id="1_wwafs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amrhl"]
+atlas = ExtResource("1_ilkcf")
+region = Rect2(42, 57, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8tvn"]
+atlas = ExtResource("1_ilkcf")
+region = Rect2(63, 57, 21, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1l4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amrhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8tvn")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 2.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpuir"]
+size = Vector2(21, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0j0jt"]
+radius = 70.0071
+
+[node name="Slime" type="CharacterBody2D"]
+script = ExtResource("1_wwafs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n1l4r")
+animation = &"shoot"
+autoplay = "shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_jpuir")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+zoom = Vector2(2.475, 2.475)
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+position = Vector2(-62, 0)
+shape = SubResource("CircleShape2D_0j0jt")
+
+[node name="Shootspeed" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="Spawnpos" type="Marker2D" parent="."]
+position = Vector2(-7, 4)
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="timeout" from="Shootspeed" to="." method="_on_shootspeed_timeout"]

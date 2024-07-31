@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://ctxr5bcjtewkh"]
+
+[ext_resource type="FontFile" uid="uid://crantry5cxj2h" path="res://Fonts/SuperOnigiri-JR56m.ttf" id="1_m25pk"]
+
+[resource]
+base_font = ExtResource("1_m25pk")
