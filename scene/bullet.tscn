@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://ccr4vyvguv00" path="res://Images/pixilart-drawing (11).png" id="1_ju1pg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4axxi"]
-size = Vector2(6, 5)
+size = Vector2(6, 5.5)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_j7x1w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -4.5)
-shape = SubResource("RectangleShape2D_4axxi")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4, -4)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-3, -3)
+scale = Vector2(0.625, 0.625)
 texture = ExtResource("1_ju1pg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -3.25)
+shape = SubResource("RectangleShape2D_4axxi")
 
 [node name="KillTimer" type="Timer" parent="."]
 autostart = true

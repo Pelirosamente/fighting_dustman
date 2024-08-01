@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmmb4t5gntfxj"]
+
+[ext_resource type="Script" path="res://bullet2.gd" id="1_cadst"]
+[ext_resource type="Texture2D" uid="uid://ccr4vyvguv00" path="res://Images/pixilart-drawing (11).png" id="2_mu5bl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0u2g"]
+size = Vector2(9, 7)
+
+[node name="bullet2" type="Area2D"]
+script = ExtResource("1_cadst")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -2)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_mu5bl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -2.5)
+shape = SubResource("RectangleShape2D_h0u2g")
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]

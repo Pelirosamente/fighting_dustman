@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqesj4ihrh55q"]
+
+[ext_resource type="Texture2D" uid="uid://dj6p2fellyu3j" path="res://Images/tlo.jpg" id="1_cejd8"]
+
+[node name="Tlo" type="Sprite2D"]
+position = Vector2(77, -88)
+scale = Vector2(1.22552, 1.16481)
+texture = ExtResource("1_cejd8")
