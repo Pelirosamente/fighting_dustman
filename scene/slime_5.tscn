@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjrqeqwtwye2o"]
+
+[ext_resource type="Script" path="res://Slime5.gd" id="1_7dxfs"]
+[ext_resource type="Texture2D" uid="uid://bu6cbhlhvyd47" path="res://Images/slime animacja.png" id="2_ckct2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uf3k"]
+atlas = ExtResource("2_ckct2")
+region = Rect2(42, 57, 21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06jjq"]
+atlas = ExtResource("2_ckct2")
+region = Rect2(63, 57, 21, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rou8i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uf3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06jjq")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 2.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tyyv"]
+size = Vector2(14, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vk2j"]
+radius = 72.0069
+
+[node name="Slime5" type="CharacterBody2D"]
+script = ExtResource("1_7dxfs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rou8i")
+animation = &"shoot"
+autoplay = "shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_4tyyv")
+
+[node name="detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(-72, 0)
+shape = SubResource("CircleShape2D_4vk2j")
+
+[node name="shoottime" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(-10, 3)
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
+[connection signal="timeout" from="shoottime" to="." method="_on_shoottime_timeout"]

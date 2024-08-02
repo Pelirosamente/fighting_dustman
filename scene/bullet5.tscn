@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://kitrs6k4bleh"]
+
+[ext_resource type="PackedScene" uid="uid://14w3uatg3rgh" path="res://scene/bullet.tscn" id="1_sq5qf"]
+
+[node name="Bullet" instance=ExtResource("1_sq5qf")]
+
+[node name="KillTimer" parent="." index="2"]
+wait_time = 0.7
