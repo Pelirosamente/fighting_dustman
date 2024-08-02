@@ -50,7 +50,7 @@ position = Vector2(54, 0)
 shape = SubResource("CircleShape2D_8irt4")
 
 [node name="shoottime" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.9
 autostart = true
 
 [node name="spawn" type="Marker2D" parent="."]

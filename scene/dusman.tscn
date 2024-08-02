@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cyns0vv0g2sm6"]
+[gd_scene load_steps=23 format=3 uid="uid://cyns0vv0g2sm6"]
 
 [ext_resource type="Texture2D" uid="uid://c2n514qmmmk2t" path="res://Images/alien animacja.png" id="1_1ngqs"]
 [ext_resource type="Script" path="res://scene/dusman.gd" id="1_p6qm2"]
@@ -52,6 +52,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2oomf")
+}],
+"loop": true,
+"name": &"visible",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mqiri")
 }, {
 "duration": 1.0,
@@ -102,8 +110,48 @@ _data = {
 "flash": SubResource("Animation_taxxj")
 }
 
+[sub_resource type="Animation" id="Animation_qnrx2"]
+resource_name = "visible"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_qi124"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2ymy"]
+_data = {
+"RESET": SubResource("Animation_qi124"),
+"visible": SubResource("Animation_qnrx2")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7i46"]
 size = Vector2(10, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovkkl"]
+size = Vector2(10, 14)
 
 [node name="Dusman" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_p6qm2")
@@ -176,7 +224,7 @@ script = ExtResource("4_a60yx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ri65g")
 sprite_frames = SubResource("SpriteFrames_w2bmi")
-animation = &"dmg"
+animation = &"visible"
 autoplay = "walk"
 
 [node name="flash" type="AnimationPlayer" parent="."]
@@ -184,6 +232,21 @@ libraries = {
 "": SubResource("AnimationLibrary_dist2")
 }
 
+[node name="visible" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f2ymy")
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_f7i46")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_ovkkl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
