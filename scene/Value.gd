@@ -1,4 +1,4 @@
 extends Label
 
-func _proces(delta):
-	text = String(Global.points)
+func _process(_delta):
+	self.text = str(Global.points)

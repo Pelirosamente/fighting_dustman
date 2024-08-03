@@ -1,4 +1,5 @@
 extends Node
 
-var health = 3
+var health = 4
 var points = 0
+

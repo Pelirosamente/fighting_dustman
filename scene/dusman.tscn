@@ -110,6 +110,21 @@ _data = {
 "flash": SubResource("Animation_taxxj")
 }
 
+[sub_resource type="Animation" id="Animation_qi124"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_qnrx2"]
 resource_name = "visible"
 length = 0.2
@@ -124,21 +139,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_qi124"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f2ymy"]
@@ -183,7 +183,7 @@ theme_override_fonts/font = ExtResource("2_n3v1a")
 theme_override_font_sizes/font_size = 9
 text = "HP"
 
-[node name="3" type="Label" parent="UI/Control"]
+[node name="4" type="Label" parent="UI/Control"]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 5.0
