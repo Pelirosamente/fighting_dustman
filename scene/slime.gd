@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var bullet = preload("res://scene/bullet.tscn")
+var bullet1 = preload("res://scene/bullet.tscn")
 #export (PackedScene) var bullet
 #@export var bullet :PackedScene 
 
@@ -21,7 +21,7 @@ func _on_shootspeed_timeout():
 
 func shoot():
 	if canshoot:
-		var bullet = bullet.instantiate()
+		var bullet = bullet1.instantiate()
 		bullet.position = spawnpos.global_position
 		get_parent().add_child(bullet)
 		

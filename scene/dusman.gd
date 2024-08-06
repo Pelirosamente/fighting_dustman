@@ -6,9 +6,10 @@ const JUMP_VELOCITY = -315.0
 var health = 4
 var alive = true
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var uded = preload("res://scene/menuded.tscn")
+#var uded = preload("res://scene/menuded.tscn")
 
 
 	
@@ -17,6 +18,8 @@ var uded = preload("res://scene/menuded.tscn")
 @onready var dmg_animation = $flash
 @onready var dmg_animation1 = $visible
 
+func _ready():
+	Global.health = 5
 
 func _physics_process(delta):
 	if alive:
@@ -44,9 +47,7 @@ func _physics_process(delta):
 			sprite.play('stand')
 		
 		move_and_slide()
-	#else:
-		#if Input.is_joy_button_pressed("")
-
+		
 
 
 func player_hit():
@@ -55,9 +56,11 @@ func player_hit():
 	dmg_animation1.play("visible")
 	Global.health -=1
 	if health == 0:
-		queue_free()
+		$Timer.start()
+		#queue_free()
 		#alive = false
 		#area.visible = true
+		#get_tree().change_scene_to_file("res://scene/menuded.tscn")
 		
 
 
@@ -67,8 +70,17 @@ func _on_area_2d_body_entered(_body):
 	dmg_animation1.play("visible")
 	Global.health -=1
 	if health == 0:
+		$Timer.start()
 		#alive = false
-		queue_free()
+		#queue_free()
 		#area.visible = true
+		#get_tree().change_scene_to_file("res://scene/menuded.tscn")
+
+
+		
 		
 
+
+
+func _on_timer_timeout():
+	get_tree().change_scene_to_file("res://scene/menuded.tscn")

@@ -161,6 +161,7 @@ metadata/_edit_horizontal_guides_ = [-67.0]
 zoom = Vector2(4.5, 4.5)
 
 [node name="UI" type="Node2D" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="UI"]
 clip_children = 1
@@ -249,4 +250,8 @@ collision_mask = 2
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_ovkkl")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
