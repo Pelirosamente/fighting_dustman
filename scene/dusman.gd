@@ -55,6 +55,7 @@ func player_hit():
 	dmg_animation.play("flash")
 	dmg_animation1.play("visible")
 	Global.health -=1
+	$hit.play()
 	if health == 0:
 		$Timer.start()
 		#queue_free()
@@ -69,6 +70,7 @@ func _on_area_2d_body_entered(_body):
 	dmg_animation.play("flash")
 	dmg_animation1.play("visible")
 	Global.health -=1
+	$hit.play()
 	if health == 0:
 		$Timer.start()
 		#alive = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cyns0vv0g2sm6"]
+[gd_scene load_steps=24 format=3 uid="uid://cyns0vv0g2sm6"]
 
 [ext_resource type="Texture2D" uid="uid://c2n514qmmmk2t" path="res://Images/alien animacja.png" id="1_1ngqs"]
 [ext_resource type="Script" path="res://scene/dusman.gd" id="1_p6qm2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scene/3.gd" id="3_7eu3d"]
 [ext_resource type="Script" path="res://scene/Value.gd" id="4_a60yx"]
 [ext_resource type="Shader" path="res://scene/dusman.gdshader" id="7_lv31p"]
+[ext_resource type="AudioStream" uid="uid://cqraf0wt5u0co" path="res://Audio/smartsound_WEAPONS_BULLET_Small_Impact_Body_03.mp3" id="8_nucms"]
 
 [sub_resource type="FontVariation" id="FontVariation_hcaxm"]
 base_font = ExtResource("3_0qkc1")
@@ -251,7 +252,11 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_ovkkl")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_nucms")
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

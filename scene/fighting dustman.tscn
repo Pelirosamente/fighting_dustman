@@ -191,7 +191,7 @@ position = Vector2(-339, -295)
 position = Vector2(-306, 360)
 
 [node name="bottle2" parent="Node2D" instance=ExtResource("13_s13gx")]
-position = Vector2(-738, -23)
+position = Vector2(-754, -23)
 
 [node name="bottle3" parent="Node2D" instance=ExtResource("14_vrhfn")]
 position = Vector2(-143, 40)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://hkrsc3u5qsqa"]
+[gd_scene load_steps=5 format=3 uid="uid://hkrsc3u5qsqa"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_jdiim"]
+[ext_resource type="AudioStream" uid="uid://bkovct5hm4le5" path="res://Audio/tspt_game_button_04_040.mp3" id="2_43v4u"]
 [ext_resource type="Texture2D" uid="uid://dj6p2fellyu3j" path="res://Images/tlo.jpg" id="2_vu3dl"]
+[ext_resource type="Texture2D" uid="uid://c1uoyas8r42hv" path="res://Images/pixil-frame-0.png" id="4_sjxl6"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -14,7 +16,14 @@ offset_right = -576.0
 offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 script = ExtResource("1_jdiim")
+metadata/_edit_vertical_guides_ = [576.0]
+metadata/_edit_horizontal_guides_ = [135.0]
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_43v4u")
+pitch_scale = 1.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_vu3dl")
@@ -43,5 +52,42 @@ text = "Play"
 layout_mode = 2
 text = "QUIT"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Pixil-frame-0" type="Sprite2D" parent="."]
+position = Vector2(-1, -80)
+scale = Vector2(5, 5)
+texture = ExtResource("4_sjxl6")
+
+[node name="fighting" type="Label" parent="."]
+layout_mode = 0
+offset_left = -267.5
+offset_top = -95.0
+offset_right = -24.5
+offset_bottom = -51.0
+theme_override_font_sizes/font_size = 45
+text = "Fighting "
+
+[node name="dustman" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.5
+offset_top = -94.0
+offset_right = 269.5
+offset_bottom = -50.0
+theme_override_font_sizes/font_size = 45
+text = "dustman"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -153.5
+offset_top = -8.0
+offset_right = 169.5
+offset_bottom = 8.0
+text = "Collect all the bottles and win"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

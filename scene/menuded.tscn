@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://pum1fqniv2g7"]
+[gd_scene load_steps=5 format=3 uid="uid://pum1fqniv2g7"]
 
 [ext_resource type="Script" path="res://scene/menuded.gd" id="1_8e3ay"]
 [ext_resource type="Texture2D" uid="uid://dj6p2fellyu3j" path="res://Images/tlo.jpg" id="2_c2mn2"]
+[ext_resource type="AudioStream" uid="uid://bkovct5hm4le5" path="res://Audio/tspt_game_button_04_040.mp3" id="2_to228"]
+[ext_resource type="Texture2D" uid="uid://6quvadvm5lws" path="res://Images/ded-pixilart.png" id="4_xmtv4"]
 
 [node name="Menuded" type="Control"]
 layout_mode = 3
@@ -12,7 +14,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 script = ExtResource("1_8e3ay")
+metadata/_edit_horizontal_guides_ = [129.0]
+metadata/_edit_vertical_guides_ = [575.0]
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_to228")
+pitch_scale = 1.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_c2mn2")
@@ -50,5 +59,27 @@ text = "RESTART"
 layout_mode = 2
 text = "QUIT"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="youlose" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.5
+offset_top = -118.0
+offset_right = 139.5
+offset_bottom = -74.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 45
+text = "You lose!"
+
+[node name="Ded-pixilart" type="Sprite2D" parent="."]
+position = Vector2(0.5, -27.5)
+scale = Vector2(2, 2)
+texture = ExtResource("4_xmtv4")
+
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
