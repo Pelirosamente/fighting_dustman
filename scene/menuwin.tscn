@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvdtvowus8vuv"]
+[gd_scene load_steps=4 format=3 uid="uid://bvdtvowus8vuv"]
 
 [ext_resource type="Script" path="res://scene/menuwin.gd" id="1_5r7rt"]
+[ext_resource type="AudioStream" uid="uid://dx32iotk0w71u" path="res://Audio/sound-effect-twinklesparkle-115095.mp3" id="2_5ql6j"]
 [ext_resource type="Texture2D" uid="uid://dj6p2fellyu3j" path="res://Images/tlo.jpg" id="2_qd6e2"]
 
 [node name="Menuwin" type="Control"]
@@ -13,6 +14,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5r7rt")
+
+[node name="win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5ql6j")
+volume_db = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_qd6e2")

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 170.0
 const JUMP_VELOCITY = -315.0
-var health = 4
+var health = 5
 var alive = true
 
 

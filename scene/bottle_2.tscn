@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dge5b06b5ybis"]
+[gd_scene load_steps=5 format=3 uid="uid://dge5b06b5ybis"]
 
 [ext_resource type="Script" path="res://bottle2.gd" id="1_1d472"]
 [ext_resource type="Texture2D" uid="uid://bwv4fkwqcktwh" path="res://Images/pixilart-drawing (4).png" id="2_p2cee"]
+[ext_resource type="AudioStream" uid="uid://dyrctw22vqve8" path="res://Audio/zapsplat_multimedia_alert_action_collect_pick_up_point_or_item_79293.mp3" id="3_8v41n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1lot"]
 size = Vector2(10, 11)
@@ -16,4 +17,13 @@ texture = ExtResource("2_p2cee")
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_k1lot")
 
+[node name="collect1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8v41n")
+volume_db = 5.0
+pitch_scale = 2.3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

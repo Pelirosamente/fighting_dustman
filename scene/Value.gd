@@ -9,14 +9,14 @@ func _ready():
 func _on_bottle_1_pointscollect_1():
 	points +=1
 	_ready()
-	if points == 15:
+	if points == 16:
 		$Timer.start()
 
 
 func _on_bottle_2_pointscollect_2():
 	points +=1
 	_ready()
-	if points == 15:
+	if points == 16:
 		$Timer.start()
 
 
