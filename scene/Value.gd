@@ -1,6 +1,6 @@
 extends Label
 
-var points = 0
+var points = Global.points
 
 func _ready():
 	self.text = str(points)

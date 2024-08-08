@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvdtvowus8vuv"]
+[gd_scene load_steps=7 format=3 uid="uid://bvdtvowus8vuv"]
 
 [ext_resource type="Script" path="res://scene/menuwin.gd" id="1_5r7rt"]
 [ext_resource type="AudioStream" uid="uid://dx32iotk0w71u" path="res://Audio/sound-effect-twinklesparkle-115095.mp3" id="2_5ql6j"]
 [ext_resource type="Texture2D" uid="uid://dj6p2fellyu3j" path="res://Images/tlo.jpg" id="2_qd6e2"]
 [ext_resource type="Texture2D" uid="uid://dqokck3jylgmc" path="res://Images/pixilart-drawing (17).png" id="4_atj3j"]
+[ext_resource type="Script" path="res://scene/5.gd" id="5_c183k"]
+[ext_resource type="Script" path="res://scene/time.gd" id="6_d86t4"]
 
 [node name="Menuwin" type="Control"]
 layout_mode = 3
@@ -16,14 +18,15 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_5r7rt")
-metadata/_edit_vertical_guides_ = [576.0]
-metadata/_edit_horizontal_guides_ = [87.0]
+metadata/_edit_vertical_guides_ = [576.0, 631.0, 780.0, 382.0]
+metadata/_edit_horizontal_guides_ = [87.0, 378.0, 556.0]
 
 [node name="win" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_5ql6j")
 volume_db = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.5, 2)
 texture = ExtResource("2_qd6e2")
 
 [node name="Control" type="Control" parent="."]
@@ -56,6 +59,7 @@ layout_mode = 2
 text = "Play again"
 
 [node name="quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "QUIT"
 
@@ -73,9 +77,43 @@ theme_override_font_sizes/font_size = 45
 text = "You win!"
 
 [node name="Pixilart-drawing(17)" type="Sprite2D" parent="."]
-position = Vector2(0.5, -25)
+position = Vector2(0.5, -35.5)
 scale = Vector2(2, 2)
 texture = ExtResource("4_atj3j")
+
+[node name="health" type="Label" parent="."]
+layout_mode = 0
+offset_left = -39.0
+offset_top = 27.5
+offset_right = 27.0
+offset_bottom = 43.5
+text = "health"
+
+[node name="5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.5
+offset_top = 27.5
+offset_right = 72.5
+offset_bottom = 43.5
+text = "5"
+script = ExtResource("5_c183k")
+
+[node name="time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 49.5
+offset_top = 115.5
+offset_right = 100.5
+offset_bottom = 131.5
+text = "10:80"
+script = ExtResource("6_d86t4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 115.5
+offset_right = 3.0
+offset_bottom = 131.5
+text = "Your time"
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/playagain" to="." method="_on_playagain_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

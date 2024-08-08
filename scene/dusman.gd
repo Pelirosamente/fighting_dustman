@@ -10,16 +10,17 @@ var alive = true
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #var uded = preload("res://scene/menuded.tscn")
-
+var timer1 = preload("res://scene/speedrun.tscn")
 
 	
-	
+
 @onready var sprite = $AnimatedSprite2D
 @onready var dmg_animation = $flash
 @onready var dmg_animation1 = $visible
 
 func _ready():
 	Global.health = 5
+
 
 func _physics_process(delta):
 	if alive:
@@ -79,10 +80,7 @@ func _on_area_2d_body_entered(_body):
 		#get_tree().change_scene_to_file("res://scene/menuded.tscn")
 
 
-		
-		
-
-
 
 func _on_timer_timeout():
 	get_tree().change_scene_to_file("res://scene/menuded.tscn")
+

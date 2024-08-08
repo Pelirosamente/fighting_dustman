@@ -6,6 +6,7 @@ func _on_play_pressed():
 	$click.play()
 	$Timer.start()
 	
+	
 
 
 func _on_quit_pressed():
