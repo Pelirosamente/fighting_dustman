@@ -19,7 +19,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_5r7rt")
 metadata/_edit_vertical_guides_ = [576.0, 631.0, 780.0, 382.0]
-metadata/_edit_horizontal_guides_ = [87.0, 378.0, 556.0]
+metadata/_edit_horizontal_guides_ = [87.0, 378.0, 556.0, 591.0, 542.0]
 
 [node name="win" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_5ql6j")
@@ -59,7 +59,6 @@ layout_mode = 2
 text = "Play again"
 
 [node name="quit" type="Button" parent="Control/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "QUIT"
 
@@ -77,42 +76,42 @@ theme_override_font_sizes/font_size = 45
 text = "You win!"
 
 [node name="Pixilart-drawing(17)" type="Sprite2D" parent="."]
-position = Vector2(0.5, -35.5)
+position = Vector2(-0.5, -20.5)
 scale = Vector2(2, 2)
 texture = ExtResource("4_atj3j")
 
 [node name="health" type="Label" parent="."]
 layout_mode = 0
-offset_left = -39.0
-offset_top = 27.5
-offset_right = 27.0
-offset_bottom = 43.5
+offset_left = -66.5
+offset_top = 108.0
+offset_right = -0.5
+offset_bottom = 124.0
 text = "health"
 
 [node name="5" type="Label" parent="."]
 layout_mode = 0
-offset_left = 32.5
-offset_top = 27.5
-offset_right = 72.5
-offset_bottom = 43.5
+offset_left = 27.5
+offset_top = 107.5
+offset_right = 67.5
+offset_bottom = 123.5
 text = "5"
 script = ExtResource("5_c183k")
 
 [node name="time" type="Label" parent="."]
 layout_mode = 0
-offset_left = 49.5
-offset_top = 115.5
-offset_right = 100.5
-offset_bottom = 131.5
+offset_left = 27.5
+offset_top = 133.5
+offset_right = 78.5
+offset_bottom = 149.5
 text = "10:80"
 script = ExtResource("6_d86t4")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -96.0
-offset_top = 115.5
-offset_right = 3.0
-offset_bottom = 131.5
+offset_left = -95.5
+offset_top = 134.0
+offset_right = 3.5
+offset_bottom = 150.0
 text = "Your time"
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/playagain" to="." method="_on_playagain_pressed"]
